@@ -1,0 +1,32 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 20px;
+}
+
+button {
+    margin: 10px;
+    padding: 10px;
+    background-color: blue;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: darkblue;
+}
+
+#hoverDiv {
+    width: 200px;
+    height: 100px;
+    background-color: lightgray;
+    line-height: 100px;
+    text-align: center;
+    margin: 20px auto;
+    border: 2px solid black;
+}
+
+#hoverDiv:hover {
+    background-color: orange;
+}
