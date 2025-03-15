@@ -1,0 +1,41 @@
+/* Basic styling for body */
+body {
+    font-family: Arial, sans-serif;
+   
+    margin: 20px;
+}
+#title{
+    background-color:chartreuse;
+}
+/* Styling for buttons */
+button {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: blue;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+/* Button hover effect */
+button:hover {
+    background-color: darkblue;
+}
+
+/* Dynamic styling for modified text */
+.modified {
+    color: red;
+    font-size: 24px;
+}
+
+/* Styling for dynamically created elements */
+.new-paragraph {
+    font-style: italic;
+    color: green;
+}
+.Bigbox{
+    height:200px;
+    width: 200px;
+    background-color: aqua;
+}
