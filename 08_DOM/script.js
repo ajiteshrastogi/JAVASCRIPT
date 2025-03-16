@@ -34,7 +34,7 @@ console.dir(allParagraphs);
 // 1. tagName - Returns the tag name of an element
 console.log(title.tagName); // Outputs: H1
 
-// 2. innerText - Gets or sets the visible text inside an element
+// 2. innerText - Gets or sets the visible* text inside an element
 console.log(title.innerText); // Outputs: DOM Manipulation in JavaScript
 title.innerText = "Modified Title"; // Changes the text content
 console.log(title.innerText); // Modified Title
