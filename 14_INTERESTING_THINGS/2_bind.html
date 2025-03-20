@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React</title>
+</head>
+<body>
+    <button>Button Clicked</button>
+</body>
+<script>
+    class React {
+        constructor(){
+            this.library = "React"
+            this.server = "https://localhost:300"
+
+            //requirement
+            document
+                .querySelector('button')
+                .addEventListener('click', this.handleClick.bind(this)) 
+
+                // the bind() method has to be used to prevent losing this.
+                // bind is used to preserve the this here
+                // meaning is actually binds the property of the constuctor
+
+        }
+        handleClick(){
+            console.log("button clicked");
+            console.log(this.server);
+        }
+    }
+
+    const app = new React()
+
+
+    // ALSO
+    // With the bind() method, an object can borrow a method from another object.
+
+    const person = {
+        firstName:"John",
+        lastName: "Doe",
+        fullName: function() {
+        return this.firstName + " " + this.lastName;
+        }
+    }
+
+    const member = {
+        firstName:"Hege",
+        lastName: "Nilsen",
+    }
+
+    let fullName = person.fullName.bind(member);
+    console.log(fullName())  //Hege Nilsen
+
+    //The member object borrows the fullname method from the person object:
+</script>
+</html>
