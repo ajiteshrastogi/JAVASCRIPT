@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async JS</title>
+</head>
+<body>
+    <h1> Hello Lets Practise the JS</h1>
+    <button>Start</button>
+    <script>
+        console.log('one');
+        console.log('two');
+        
+        setTimeout(function (){
+            console.log("hello");
+        },2000) ; // here 2000 means 2 ms
+
+    // setTimeout() method of the Window interface sets a timer which executes
+    // a function or specified piece of code once the timer expires.
+
+        console.log('three');
+        console.log('four');
+ 
+    //here firstly 'one' . 'two' , 'three', 'four' and then hello will execute beacuse of delay of 2ms in setTimeOut
+
+    // for display in webPage
+
+    function changeText(){
+        document.querySelector('h1').innerHTML = "learning the setTimout";
+    }
+    
+    const time= setTimeout(changeText, 4000);
+
+    document.querySelector("button").addEventListener('click', function(){
+        clearTimeout(time);
+        console.log("stopped!");
+    });
+
+    // now if click on the button then the changing of the text in the h1 is stop!
+    
+
+    </script>
+</body>
+</html>
