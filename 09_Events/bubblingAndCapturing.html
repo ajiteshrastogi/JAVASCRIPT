@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Event Bubbling and Capturing Demo</title>
+  <style>
+    /* Basic styling for the nested elements */
+    .outer {
+      background-color: #ffdddd;
+      padding: 20px;
+      margin: 20px;
+    }
+    .middle {
+      background-color: #ddffdd;
+      padding: 20px;
+      margin: 20px;
+    }
+    .inner {
+      background-color: #ddddff;
+      padding: 20px;
+      margin: 20px;
+    }
+    h1 {
+      text-align: center;
+      font-family: sans-serif;
+    }
+    p {
+      text-align: center;
+      font-family: sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <h1>Event Propagation Demo</h1>
+  <p>Click on any of the nested boxes and check your browser console to see the propagation order.</p>
+
+  <!--
+    The nested div elements below will help illustrate the two phases of event propagation:
+      1. Capturing Phase: The event moves from the root down to the target element.
+      2. Bubbling Phase: After the target receives the event, it "bubbles" back up to the root.
+  -->
+  <div class="outer" id="outer">
+    Outer Div
+    <div class="middle" id="middle">
+      Middle Div
+      <div class="inner" id="inner">
+        Inner Div
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Explanation of event propagation:
+    // When an event occurs on an element, it first travels down the DOM tree (capturing phase),
+    // reaches the target element, then bubbles back up (bubbling phase).
+    // You can attach event listeners for both phases by setting the third parameter (useCapture).
+
+    // Adding event listeners to the outer div:
+    // Capturing phase listener: (true means listener is in capturing mode)
+    document.getElementById('outer').addEventListener('click', function(event) {
+      console.log('Outer Div: Capturing');
+    }, true);
+    
+    // Bubbling phase listener: (false or omitted means bubbling phase; this is the default)
+    document.getElementById('outer').addEventListener('click', function(event) {
+      console.log('Outer Div: Bubbling');
+    }, false);
+    
+    // Adding event listeners to the middle div:
+    document.getElementById('middle').addEventListener('click', function(event) {
+      console.log('Middle Div: Capturing');
+    }, true);
+    
+    document.getElementById('middle').addEventListener('click', function(event) {
+      console.log('Middle Div: Bubbling');
+    }, false);
+    
+    // Adding event listeners to the inner div:
+    document.getElementById('inner').addEventListener('click', function(event) {
+      console.log('Inner Div: Capturing');
+    }, true);
+    
+    document.getElementById('inner').addEventListener('click', function(event) {
+      console.log('Inner Div: Bubbling');
+    }, false);
+    
+    // OPTIONAL: Stop event propagation example.
+    // Uncomment the code below to see how stopPropagation prevents further propagation.
+    /*
+    document.getElementById('inner').addEventListener('click', function(event) {
+      console.log('Inner Div: Stop Propagation');
+      // This will stop the event from bubbling further up.
+      event.stopPropagation();
+    }, false);
+    */
+    
+    // When you click on the inner div, the expected log order (without stopPropagation) is:
+    // 1. Outer Div: Capturing
+    // 2. Middle Div: Capturing
+    // 3. Inner Div: Capturing
+    // 4. Inner Div: Bubbling
+    // 5. Middle Div: Bubbling
+    // 6. Outer Div: Bubbling
+    //
+    // This order demonstrates that the event travels down from the outermost element to the target,
+    // and then back up from the target to the outermost element.
+    
+  </script>
+</body>
+</html>
+
+<!-- 
+true (Capturing Phase):
+When set to true, the event listener is registered during the capturing phase.
+This means the event is caught on its way down the DOM tree—from the outermost element to the target element. 
+Listeners set with true will trigger before the event reaches its target.
+
+false (Bubbling Phase):  -> Default
+When set to false (or omitted, as it defaults to false), the event listener is registered during the bubbling phase.
+Here, the event is caught on its way up the DOM tree—from the target element back out to the root. 
+Listeners set with false will trigger after the event has reached the target. -->
